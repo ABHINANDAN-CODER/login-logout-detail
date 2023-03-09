@@ -23,7 +23,7 @@
         </div>
         <div id="alerts">
             <div class="alert alert-danger" id="alert-view" role="alert">
-                This is a danger alert—check it out!
+                
             </div>
         </div>
         <form class="form-main" action="" method="post">
@@ -59,7 +59,7 @@ if(isset($_SESSION['id']) and isset($_SESSION['name'])){
 if(isset($_POST['submit'])){
     $name = $_POST['full_name'];
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = $_POST['password']; 
     include 'database.php';
     $conn = new PDO($db_name , $username, $password) or die("connection error");
     $sql = $conn->prepare("SELECT * FROM user WHERE email = ?");
