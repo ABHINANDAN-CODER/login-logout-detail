@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloock&family=Labrada:wght@200;400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding:0;
+}
+body{
+    box-sizing: border-box;
+    background-color: #d7d7d7;
+}
+.container{
+    background-color: rgb(252, 245, 245);
+    width: 400px;
+    min-height: 600px;
+    border-radius: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 20px 1px black;
+    padding-bottom: 40px;
+    overflow: hidden;
+
+}
+.logo{
+    padding: 50px;
+}
+.logo img{
+    display: block;
+    margin: auto;
+    width: 90px;
+    border: 2px solid black;
+    border-radius: 50%;
+
+}
+
+.text_greet{
+    font-family: 'Labrada', serif;
+    font-weight: 800;
+    font-size: larger;
+    text-align: center;
+}
+
+.form-main input{
+    padding: 0 15px;
+}
+#alert-view{
+    display: none;
+}
+
+label{
+    font-family: Glook, Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.input_box{
+    width: 60%;
+    height: 39px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    border: solid rgb(244, 244, 244);
+    box-shadow: 0 0 2px 1px rgb(129, 129, 129);
+}
+#inp1{
+    width: 100%;
+    transition: all 2s;
+    transition-delay: 5ms;
+    transition-timing-function: ease;
+
+}
+.form-main .login-btn{
+    border-radius: 30px;
+    border: 2px solid;
+}
+.l-btn{
+    margin-top: 30px;
+    margin-left: 40%;
+    height: 30px;
+}
+.btn-middle{
+    margin-left: 30%;
+}
+
+/* area page css */
+
+.area-body{
+    text-align: center;
+}
+
+#coffee {
+    width: 85%;
+    border-radius: 20px;
+    margin-top: 20px;
+    height: 70px;
+    margin: 20px 30px;
+    border: 2px solid;
+    border-radius: 30px;
+}
+pre{
+    background-color: black;
+    color: #0bed40;
+    text-indent: left;
+    padding: 3px 15px;
+    border-radius: 10px;
+}
