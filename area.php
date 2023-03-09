@@ -1,7 +1,7 @@
 <?php 
   session_start();
   if(!isset($_SESSION['id']) or !isset($_SESSION['name'])){
-    header("location : login.php");
+    header("location:login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
         </div>
         <div class="area-body">
             <section>
-                  Hello <?php echo $_SESSION['name']; ?> &nbsp; <button type="button" class="btn btn-secondary" onclick="location.href='login.php'">logout</button> <br><br>
+                  Hello <?php echo $_SESSION['name']; ?> &nbsp; <button type="button" class="btn btn-secondary" onclick="location.href='logout.php'">logout</button> <br><br>
               </section>
               <section>
                   <button type="button" class="btn btn-primary" onclick="location.href='create.php'">Create New User</button>

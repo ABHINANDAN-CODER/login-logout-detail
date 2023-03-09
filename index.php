@@ -52,8 +52,9 @@
 
 <?php
 
+session_start();
 if(isset($_SESSION['id']) and isset($_SESSION['name'])){
-    header("location : area.php");
+    header("location:area.php");
 }
 
 if(isset($_POST['submit'])){
@@ -61,7 +62,7 @@ if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $password = $_POST['password']; 
     include 'database.php';
-    $conn = new PDO($db_name , $username, $password) or die("connection error");
+    $conn = new PDO($db_name , $username, $passw) or die("connection error");
     $sql = $conn->prepare("SELECT * FROM user WHERE email = ?");
     $sql->bindParam(1,$email,PDO::PARAM_STR);
     $sql->execute();

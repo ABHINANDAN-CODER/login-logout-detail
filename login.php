@@ -31,7 +31,7 @@
             </div>
             <div id="inp3">
                 <label for="full_name">Enter password</label>
-                <input type="text" id="full_name" name="full_name" class="input-group input_box" required>
+                <input type="text" id="full_name" name="password" class="input-group input_box" required>
             </div>
             <input class="btn btn-primary l-btn" type="submit" name="submit" value="login"> <br> <br>
         </form>
@@ -45,15 +45,16 @@
 
 
 <?php
+session_start();
 if(isset($_SESSION['id']) and isset($_SESSION['name'])){
-    header("location : area.php");
+    header("location:area.php");
 }
 
 if(isset($_POST['submit'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     include 'database.php';
-    $conn = new PDO($db_name , $username, $password) or die("connection error");
+    $conn = new PDO($db_name , $username, $passw) or die("connection error");
     $sql = $conn->prepare("SELECT * FROM user WHERE email = ?");
     $sql->bindParam(1,$email,PDO::PARAM_STR);
     $sql->execute();
@@ -65,14 +66,14 @@ if(isset($_POST['submit'])){
     $pass = md5($password);
 
     print_r($row);
-    
 
 
-    if($row['email']==$email and $row['password']==$pass){
+    if(($row['email']==$email) and ($row['password']==$pass)){
         session_start();
         $_SESSION['id'] = $row['id'];
         $_SESSION['name'] = $row['name'];
-        header("location : area.php");
+        header("location:area.php");
+        
     }
     else{
         echo "<script>view_alert2();</script>";
