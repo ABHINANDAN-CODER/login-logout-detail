@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
-<body>
+<body> 
     <div class="container">
       <div class="logo">
             <img src="profile.png" alt="" srcset="">
