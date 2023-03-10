@@ -12,7 +12,7 @@
     <title>Document</title>
 </head>
 <body> 
-    <div class="container">
+    <div class="container"> 
       <div class="logo">
             <img src="profile.png" alt="" srcset="">
         </div>
