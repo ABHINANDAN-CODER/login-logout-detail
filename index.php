@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Free Linux user-account</title>
 </head>
 <body>
     
@@ -73,23 +73,27 @@ if(isset($_POST['submit'])){
         die();
     }
     $pass = md5($password);
-    $sql = $conn->prepare("INSERT INTO USER (name, email, password) VALUES (?, ?, ?)");
-    $sql->bindParam(1,$name,PDO::PARAM_STR);
-    $sql->bindParam(2,$email,PDO::PARAM_STR);
-    $sql->bindParam(3,$pass,PDO::PARAM_STR);
-    $sql->execute(); $sql = null;
-
+    $conns = new mysqli($host, $username, $passw, $dbname);
+    if ($conns->connect_error) {
+        die("Connection failed: " . $conns->connect_error);
+    }
+    
+    $stmt = $conns->prepare("INSERT INTO user (name, email, password) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $name, $email, $pass);
+    $stmt->execute();
+    $stmt->close();
+    $conns->close();
+    
     $sql = $conn->prepare("SELECT * FROM user WHERE email = ?");
     $sql->bindParam(1,$email,PDO::PARAM_STR);
     $sql->execute();
+    
     $result = $sql->fetchAll(PDO::FETCH_ASSOC);
     foreach($result as $row){
-
-    }
-    echo $row['id'];
-    session_start();
-    $_SESSION['id'] = $row['id'];
-    $_SESSION['name'] = $row['name'];
+        session_start();
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['name'] = $row['name'];
     header("location:area.php");
+    }
 }
 ?>

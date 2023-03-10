@@ -1,3 +1,13 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['id']) or !isset($_SESSION['name'])){
+    header("location:login.php");
+  }
+  if(!isset($_SESSION['temp_lnid']) or !isset($_SESSION['temp_lnpass'])){
+    header("location:area.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +26,14 @@
       <div class="logo">
             <img src="profile.png" alt="" srcset="">
         </div>
+        <section style="text-align: center;">
+                  Hello <?php echo $_SESSION['name']; ?> &nbsp; <button type="button" class="btn btn-secondary" onclick="location.href='logout.php'">logout</button> <br><br>
+              </section>
+              
+             <section style=" margin-left:30%; ">
+             <button type="button" class="btn btn-primary" onclick="location.href='area.php'">back</button>
+             </section>
+
         <div class="detail.area">
             <p #connect>
                   First you have to connect with server, you can use this by using an any terminal / ssh connection. <br>
@@ -23,7 +41,7 @@
                   <br> 
                   suggested : <b>Putty ssh</b> <br>
                   Then run below command on your cmd / terminal.
-                  <pre>ssh user@personal-server.abhinandanmohanty.in
+                  <pre>ssh <?php echo $_SESSION['temp_lnid'] ?>@personal-server.abhinandanmohanty.in
                   </pre>
             </p>
             <p>
@@ -32,10 +50,14 @@
             <p>
                   then Enter your password, password will be hidden continue typing that you enter during server creation.
             </p>
+            <h4> Your password :<?php echo $_SESSION['temp_lnpass'] ?> </h4>
             <h3 id="change-pass">How to change password using terminal</h3>
             <p>
-
+                To change password fist login to your server (user account). <br>
+                then type <span>passwd</span> then you have to enter current password and then repet password.
             </p>
+            <pre>passwd
+            </pre>
         </div>
         <a href="upi://pay?pn=Coffee to Abhinandan mohanty &amp;pa=ambaniji@jio&amp;cu=INR"><img id="coffee" src="coffee.png" alt="buy me a coffee"></a>
     </div>
@@ -43,3 +65,10 @@
 <script src="bootstrap.js"></script>
 <script src="script.js"></script>
 </html>
+
+
+<?php
+unset($_SESSION['temp_lnid']);
+unset($_SESSION['temp_lnpass']);
+
+?>
